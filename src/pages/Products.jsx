@@ -10,11 +10,13 @@ import { useState, useEffect } from 'react';
 import Chip from '@mui/material/Chip';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Link } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../store/slices/cart';
 
 export default function Products() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true); // State to handle loading spinner
-
+const dispatch =useDispatch()
   useEffect(() => {
     // Fetch products data from API
     fetch('https://dummyjson.com/products')
@@ -132,18 +134,12 @@ export default function Products() {
                   
     // The Magic Line: Here we catch the click event 'e' and stop it from reaching the Card Link
                   onClick={(e) => {
-      
-                    e.preventDefault();
-                    // Prevents any default browser link behavior
-                    e.stopPropagation(); // Stops the click from bubbling up to the Card
-                    
-      
-                    // Here you will handle your Add to Cart logic later
-                    
-                    console.log('Product added to cart:', product.id); 
-                    
-                  }}
-                  
+                    dispatch(addToCart(product))
+                    e.preventDefault()
+                    e.stopPropagation()
+                  }
+
+                  }
                   sx={{ borderRadius: '8px', fontWeight: 'bold', textTransform: 'none',textDecoration:'none' }}
                   
   >

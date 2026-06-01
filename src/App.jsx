@@ -2,8 +2,8 @@ import ResponsiveAppBar from './components/Navbar'
 import { BrowserRouter, Routes, Route } from 'react-router'
 import Products from './pages/Products';
 import ProductDetails from './pages/ProductDetails';
+import Cart from './pages/Cart';
 
-const Cart = () => <h2>💳 عربة التسوق (قريباً)</h2>;
 const NotFound = () => <h2>⚠️ الصفحة غير موجودة</h2>;
 function App() {
 
